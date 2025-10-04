@@ -20,6 +20,7 @@ var vijaysalesRouter = require('./routes/vijaysales');
 var vijaySalesCategoryRouter = require('./routes/vijaySalesCategory');
 var samsungCategoryRouter = require('./routes/samsungCategory');
 var nykaaRouter = require('./routes/nykaa');
+var nykaaCategoryRouter = require('./routes/nykaaCategory');
 var oneMgRouter = require('./routes/oneMg');
 var pharmeasyRouter = require('./routes/pharmeasy');
 var netmedsRouter = require('./routes/netmeds');
@@ -40,6 +41,9 @@ var apollopharmacyRouter = require('./routes/apollopharmacy');
 var wellnessforeverRouter = require('./routes/wellnessforever');
 var dmartRouter = require('./routes/dmart');
 var liciousRouter = require('./routes/licious');
+var theBodyShopCategoryRouter = require('./routes/theBodyShopCategory');
+var ajioCategoriesRouter = require('./routes/ajioCategories');
+var liciousCategoriesRouter = require('./routes/liciousCategories');
 
 var app = express();
 
@@ -64,6 +68,7 @@ app.use('/api/vijaysales', vijaysalesRouter);
 app.use('/api/vijay-sales-category', vijaySalesCategoryRouter);
 app.use('/api/samsung-category', samsungCategoryRouter);
 app.use('/api/nykaa', nykaaRouter);
+app.use('/api/nykaa-category', nykaaCategoryRouter);
 app.use('/api/1mg', oneMgRouter);
 app.use('/api/pharmeasy', pharmeasyRouter);
 app.use('/api/netmeds', netmedsRouter);
@@ -84,5 +89,8 @@ app.use('/api/apollopharmacy', apollopharmacyRouter);
 app.use('/api/wellnessforever', wellnessforeverRouter);
 app.use('/api/dmart', dmartRouter);
 app.use('/api/licious', liciousRouter);
+app.use('/api/thebodyshop-category', theBodyShopCategoryRouter);
+app.use('/api/ajio-categories', ajioCategoriesRouter);
+app.use('/api/licious-categories', liciousCategoriesRouter);
 
 module.exports = app;

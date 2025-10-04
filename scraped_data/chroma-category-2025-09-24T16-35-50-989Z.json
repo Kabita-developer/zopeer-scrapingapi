@@ -1,0 +1,520 @@
+{
+  "categoryName": "Home Appliances | Buy Latest Home Appliances Online in India at CromaHamburger MenuHamburger MenuPencil Iconuser-circleMy AddressMy Ordermedalheart-straightMy DeviceMy Services",
+  "categoryUrl": "https://www.croma.com/home-appliances/c/5",
+  "totalProducts": 21,
+  "products": [
+    {
+      "productId": "311927",
+      "productName": "Croma 7 in 1 Convertible 1.5 Ton 3 Star Inverter Split AC with Auto clean function (2025 Model, Copper Condenser, CRLA018IND283265)",
+      "brand": "Croma",
+      "sellingPrice": "₹27,490",
+      "actualPrice": "₹37,500",
+      "discount": "27%",
+      "discountAmount": "₹10,010",
+      "productImage": "https://media.tatacroma.com/311927_0_qbldwa.png",
+      "productUrl": "https://www.croma.com/p/311927",
+      "rating": 3.8387096774,
+      "reviewCount": 32,
+      "availability": "Available",
+      "category": "5",
+      "subCategory": "46",
+      "offers": [
+        "Festive offer 10% Discount"
+      ],
+      "additionalInfo": {
+        "applianceType": "LA-LTD",
+        "demoFlag": false,
+        "productLiveDate": "2025-01-28T11:07:10"
+      }
+    },
+    {
+      "productId": "210990",
+      "productName": "Oakter OakRemote Universal Remote (360 Degree IP Coverage, White)",
+      "brand": "Oakter",
+      "sellingPrice": "₹3,334",
+      "actualPrice": "₹4,590",
+      "discount": "27%",
+      "discountAmount": "₹1,256",
+      "productImage": "https://media.tatacroma.com/Croma%20Assets/Small%20Appliances/Electrical%20Equipments/Images/8905857040414.png",
+      "productUrl": "https://www.croma.com/p/210990",
+      "rating": 4,
+      "reviewCount": 1,
+      "availability": "Available",
+      "category": "997",
+      "subCategory": "1020",
+      "offers": [
+        "10% Upto 2k on Cart above 10k"
+      ],
+      "additionalInfo": {
+        "applianceType": "SA",
+        "demoFlag": false,
+        "productLiveDate": "2020-04-24T01:06:31"
+      }
+    },
+    {
+      "productId": "219044",
+      "productName": "BAJAJ Majesty DX 6 1000 Watts Dry Iron (German Coating Technology, White)",
+      "brand": "Bajaj",
+      "sellingPrice": "₹549",
+      "actualPrice": "₹920",
+      "discount": "40%",
+      "discountAmount": "₹371",
+      "productImage": "https://media.tatacroma.com/Croma%20Assets/Small%20Appliances/Home%20Appliances/Images/219044_0_xqqoc4.png",
+      "productUrl": "https://www.croma.com/p/219044",
+      "rating": 4.2325581395,
+      "reviewCount": 19,
+      "availability": "Available",
+      "category": "5",
+      "subCategory": "980",
+      "offers": [
+        "10% Upto 2k on Cart above 10k"
+      ],
+      "additionalInfo": {
+        "applianceType": "SA-LTD",
+        "demoFlag": false,
+        "productLiveDate": "2019-09-30T03:42:03"
+      }
+    },
+    {
+      "productId": "257366",
+      "productName": "DAIKIN Premium Series 1.5 Ton 3 Star Inverter Split Smart AC with Dew Clean Technology (Copper Condenser, ATKL50UV16V/U/V3)",
+      "brand": "Daikin",
+      "sellingPrice": "₹32,490",
+      "actualPrice": "₹53,830",
+      "discount": "40%",
+      "discountAmount": "₹21,340",
+      "productImage": "https://media.tatacroma.com/Croma%20Assets/Large%20Appliances/Air%20Conditioner/Images/257366_0_zzhlmu.png",
+      "productUrl": "https://www.croma.com/p/257366",
+      "rating": 4.1076923077,
+      "reviewCount": 40,
+      "availability": "Available",
+      "category": "5",
+      "subCategory": "46",
+      "offers": [
+        "Bank offer: 10% upto Rs 3000"
+      ],
+      "additionalInfo": {
+        "applianceType": "LA",
+        "demoFlag": false,
+        "productLiveDate": "2022-07-04T12:07:29"
+      }
+    },
+    {
+      "productId": "306820",
+      "productName": "Xiaomi 2i HD WiFi Dome CCTV Security Camera (AI Powered Motion Detection, MJSXJ10CM, White)",
+      "brand": "Xiaomi",
+      "sellingPrice": "₹2,799",
+      "actualPrice": "₹4,499",
+      "discount": "38%",
+      "discountAmount": "₹1,700",
+      "productImage": "https://media.tatacroma.com/Croma%20Assets/Small%20Appliances/Home%20Safety%20Security/Images/306820_kpak1z.png",
+      "productUrl": "https://www.croma.com/p/306820",
+      "rating": 3.6666666667,
+      "reviewCount": 1,
+      "availability": "Available",
+      "category": "5",
+      "subCategory": "54",
+      "offers": [
+        "10% Upto 2k on Cart above 10k"
+      ],
+      "additionalInfo": {
+        "applianceType": "SA",
+        "demoFlag": false,
+        "productLiveDate": "2024-05-30T04:09:02"
+      }
+    },
+    {
+      "productId": "307023",
+      "productName": "Croma 6.5 kg 5 Star Semi Automatic Washing Machine with Built-in Soak Function (2025 Model, Burgundy)",
+      "brand": "Croma",
+      "sellingPrice": "₹6,990",
+      "actualPrice": "₹12,000",
+      "discount": "42%",
+      "discountAmount": "₹5,010",
+      "productImage": "https://media.tatacroma.com/307023_0_juwlak.png",
+      "productUrl": "https://www.croma.com/p/307023",
+      "rating": 3.8571428571,
+      "reviewCount": 3,
+      "availability": "Available",
+      "category": "5",
+      "subCategory": "48",
+      "offers": [
+        "Festive Special Price"
+      ],
+      "additionalInfo": {
+        "applianceType": "LA-LTD",
+        "demoFlag": false,
+        "productLiveDate": "2025-02-07T05:36:09"
+      }
+    },
+    {
+      "productId": "217687",
+      "productName": "SafeStab 11 Amps Voltage Stabilizer For 1.5T Air Conditioner (150 - 270 V, Digital Display, VST400D, White)",
+      "brand": "SafeStab",
+      "sellingPrice": "₹3,399",
+      "actualPrice": "₹3,400",
+      "discount": "0%",
+      "discountAmount": "₹1",
+      "productImage": "https://media.tatacroma.com/Croma%20Assets/Small%20Appliances/Electrical%20Equipments/Images/217687_0_oycwe5.png",
+      "productUrl": "https://www.croma.com/p/217687",
+      "rating": 3.9791666667,
+      "reviewCount": 44,
+      "availability": "Available",
+      "category": "5",
+      "subCategory": "53",
+      "offers": [
+        "10% Upto 2k on Cart above 10k"
+      ],
+      "additionalInfo": {
+        "applianceType": "SA-LTD",
+        "demoFlag": false,
+        "productLiveDate": "2020-05-13T07:19:47"
+      }
+    },
+    {
+      "productId": "316352",
+      "productName": "ILIFE A30 Pro Robotic Vacuum Cleaner & Mop with Self-Empty Station (Alexa & Google Assistant, White)",
+      "brand": "ILIFE",
+      "sellingPrice": "₹21,900",
+      "actualPrice": "₹69,999",
+      "discount": "69%",
+      "discountAmount": "₹48,099",
+      "productImage": "https://media.tatacroma.com/Croma%20Assets/Small%20Appliances/Vacuum%20Cleaners/Images/316352_0_IX5JNim61r.png?updatedAt=1755498764877",
+      "productUrl": "https://www.croma.com/p/316352",
+      "rating": 0,
+      "reviewCount": 0,
+      "availability": "Available",
+      "category": "5",
+      "subCategory": "50",
+      "offers": [
+        "Extra Rs.1000 off on Cart"
+      ],
+      "additionalInfo": {
+        "applianceType": "SA",
+        "demoFlag": false,
+        "productLiveDate": "2025-08-20T07:14:36"
+      }
+    },
+    {
+      "productId": "312489",
+      "productName": "ILIFE A20 Pro Robotic Vacuum Cleaner & Mop with Wi-Fi Connectivity (Alexa & Google Assistant, Dove Gray)",
+      "brand": "ILIFE",
+      "sellingPrice": "₹16,900",
+      "actualPrice": "₹69,999",
+      "discount": "76%",
+      "discountAmount": "₹53,099",
+      "productImage": "https://media.tatacroma.com/Croma%20Assets/Small%20Appliances/Vacuum%20Cleaners/Images/312489_nz9ucg.png",
+      "productUrl": "https://www.croma.com/p/312489",
+      "rating": 4.8823529412,
+      "reviewCount": 34,
+      "availability": "Available",
+      "category": "5",
+      "subCategory": "50",
+      "offers": [
+        "Extra Rs.400 off on Cart"
+      ],
+      "additionalInfo": {
+        "applianceType": "SA",
+        "demoFlag": false,
+        "productLiveDate": "2025-01-02T11:23:50"
+      }
+    },
+    {
+      "productId": "314791",
+      "productName": " Blue Star P SERIES 1.5 Ton 3 Star Fixed Speed Window AC (2025 Model, Copper Condenser, WFE318P)",
+      "brand": "Blue Star",
+      "sellingPrice": "₹25,990",
+      "actualPrice": "₹36,400",
+      "discount": "29%",
+      "discountAmount": "₹10,410",
+      "productImage": "https://media.tatacroma.com/Croma%20Assets/Large%20Appliances/Air%20Conditioner/Images/314791_0_tntilr.png",
+      "productUrl": "https://www.croma.com/p/314791",
+      "rating": 0,
+      "reviewCount": 0,
+      "availability": "Available",
+      "category": "5",
+      "subCategory": "46",
+      "offers": [
+        "Bank offer: 10% upto Rs 3000"
+      ],
+      "additionalInfo": {
+        "applianceType": "LA",
+        "demoFlag": false,
+        "productLiveDate": "2025-04-11T09:24:39"
+      }
+    },
+    {
+      "productId": "243594",
+      "productName": "Croma 7.5 kg 5 Star Fully Automatic Top Load Washing Machine ( Fuzzy Control, Grey)",
+      "brand": "Croma",
+      "sellingPrice": "₹12,790",
+      "actualPrice": "₹24,000",
+      "discount": "47%",
+      "discountAmount": "₹11,210",
+      "productImage": "https://media.tatacroma.com/Croma%20Assets/Large%20Appliances/Washers%20and%20Dryers/Images/243594_0_ixyl2n.png",
+      "productUrl": "https://www.croma.com/p/243594",
+      "rating": 3.3370786517,
+      "reviewCount": 60,
+      "availability": "Available",
+      "category": "5",
+      "subCategory": "48",
+      "offers": [
+        "Festive offer 10% Discount"
+      ],
+      "additionalInfo": {
+        "applianceType": "LA",
+        "demoFlag": false,
+        "productLiveDate": "2022-01-14T04:51:24"
+      }
+    },
+    {
+      "productId": "317070",
+      "productName": "Orient Fabrismooth 1000 Watts Dry Iron (Temperature Control, White)",
+      "brand": "Orient",
+      "sellingPrice": "₹480",
+      "actualPrice": "₹1,040",
+      "discount": "54%",
+      "discountAmount": "₹560",
+      "productImage": "https://media.tatacroma.com/Croma%20Assets/Small%20Appliances/Garment%20Care/Images/317070_0__DsDniRDLC.png?updatedAt=1753093086262",
+      "productUrl": "https://www.croma.com/p/317070",
+      "rating": 4.5,
+      "reviewCount": 2,
+      "availability": "Available",
+      "category": "5",
+      "subCategory": "980",
+      "offers": [
+        "10% Upto 2k on Cart above 10k"
+      ],
+      "additionalInfo": {
+        "applianceType": "SA",
+        "demoFlag": false,
+        "productLiveDate": "2025-07-22T03:29:39"
+      }
+    },
+    {
+      "productId": "252909",
+      "productName": "Croma 8 kg 5 Star Fully Automatic Top Load Washing Machine ( In Built heater, Inox Grey)",
+      "brand": "Croma",
+      "sellingPrice": "₹18,990",
+      "actualPrice": "₹32,000",
+      "discount": "41%",
+      "discountAmount": "₹13,010",
+      "productImage": "https://media.tatacroma.com/Croma%20Assets/Large%20Appliances/Washers%20and%20Dryers/Images/252909_0_vrvryq.png",
+      "productUrl": "https://www.croma.com/p/252909",
+      "rating": 4.5384615385,
+      "reviewCount": 13,
+      "availability": "Available",
+      "category": "5",
+      "subCategory": "48",
+      "offers": [
+        "Festive offer 10% Discount"
+      ],
+      "additionalInfo": {
+        "applianceType": "LA",
+        "demoFlag": false,
+        "productLiveDate": "2022-08-10T03:33:11"
+      }
+    },
+    {
+      "productId": "302481",
+      "productName": "Crompton Surebreeze Hill Briz 1 Star 1200mm 3 Blade Copper Motor Ceiling Fan (Inverter Compatibility, Brown)",
+      "brand": "Crompton",
+      "sellingPrice": "₹1,299",
+      "actualPrice": "₹2,599",
+      "discount": "50%",
+      "discountAmount": "₹1,300",
+      "productImage": "https://media.tatacroma.com/Croma%20Assets/Small%20Appliances/Fans/Images/302481_0_runoxw.png",
+      "productUrl": "https://www.croma.com/p/302481",
+      "rating": 4.2727272727,
+      "reviewCount": 12,
+      "availability": "Available",
+      "category": "5",
+      "subCategory": "51",
+      "offers": [
+        "10% Upto 2k on Cart above 10k"
+      ],
+      "additionalInfo": {
+        "applianceType": "SA-LTD",
+        "demoFlag": false,
+        "productLiveDate": "2023-10-24T08:19:06"
+      }
+    },
+    {
+      "productId": "311918",
+      "productName": "Croma 7 in 1 Convertible 1 Ton 3 Star Inverter Split AC with Temperature Sensor (2025 Model, Copper Condenser, CRLA012IND283264)",
+      "brand": "Croma",
+      "sellingPrice": "₹25,990",
+      "actualPrice": "₹33,300",
+      "discount": "22%",
+      "discountAmount": "₹7,310",
+      "productImage": "https://media.tatacroma.com/311918_0_f4kxwv.png",
+      "productUrl": "https://www.croma.com/p/311918",
+      "rating": 3.3157894737,
+      "reviewCount": 8,
+      "availability": "Available",
+      "category": "5",
+      "subCategory": "46",
+      "offers": [
+        "Festive offer 10% Discount"
+      ],
+      "additionalInfo": {
+        "applianceType": "LA-LTD",
+        "demoFlag": false,
+        "productLiveDate": "2025-01-28T01:00:59"
+      }
+    },
+    {
+      "productId": "312488",
+      "productName": "ILIFE T20s Pro Robotic Vacuum Cleaner & Mop with Advanced LiDAR Navigation (5200 mAh Battery, Space Gray)",
+      "brand": "ILIFE",
+      "sellingPrice": "₹27,455",
+      "actualPrice": "₹99,990",
+      "discount": "73%",
+      "discountAmount": "₹72,535",
+      "productImage": "https://media.tatacroma.com/Croma%20Assets/Small%20Appliances/Vacuum%20Cleaners/Images/312488_bvgyqz.png",
+      "productUrl": "https://www.croma.com/p/312488",
+      "rating": 4.7894736842,
+      "reviewCount": 15,
+      "availability": "Available",
+      "category": "5",
+      "subCategory": "50",
+      "offers": [
+        "Extra Rs.555 off on Cart"
+      ],
+      "additionalInfo": {
+        "applianceType": "SA",
+        "demoFlag": false,
+        "productLiveDate": "2025-01-02T11:22:50"
+      }
+    },
+    {
+      "productId": "300154",
+      "productName": "Crompton Energion Hyperjet 5 Star 1200mm 3 Blade BLDC Motor Ceiling Fan with Remote (Anti rust, Brown)",
+      "brand": "Crompton",
+      "sellingPrice": "₹2,099",
+      "actualPrice": "₹4,849",
+      "discount": "57%",
+      "discountAmount": "₹2,750",
+      "productImage": "https://media.tatacroma.com/Croma%20Assets/Small%20Appliances/Fans/Images/300154_0_kaagkp.png",
+      "productUrl": "https://www.croma.com/p/300154",
+      "rating": 3.2,
+      "reviewCount": 7,
+      "availability": "Available",
+      "category": "5",
+      "subCategory": "51",
+      "offers": [
+        "10% Upto 2k on Cart above 10k"
+      ],
+      "additionalInfo": {
+        "applianceType": "SA-LTD",
+        "demoFlag": false,
+        "productLiveDate": "2023-09-08T07:16:40"
+      }
+    },
+    {
+      "productId": "306329",
+      "productName": "SAMSUNG 809 Litres Frost Free French Door Convertible Refrigerator with Water Dispenser (RF71DB9950QD/TL, Clean Charcoal & Stainless Steel)",
+      "brand": "Samsung",
+      "sellingPrice": "₹3,83,500",
+      "actualPrice": "₹5,09,000",
+      "discount": "25%",
+      "discountAmount": "₹1,25,500",
+      "productImage": "https://media.tatacroma.com/Croma%20Assets/Large%20Appliances/Refrigerator/Images/306329_0_sbbeli.png",
+      "productUrl": "https://www.croma.com/p/306329",
+      "rating": 0,
+      "reviewCount": 0,
+      "availability": "Available",
+      "category": "5",
+      "subCategory": "47",
+      "offers": [
+        "Bank Offer 20% Upto Rs 20000"
+      ],
+      "additionalInfo": {
+        "applianceType": "LA",
+        "demoFlag": false,
+        "productLiveDate": "2024-11-25T03:39:10"
+      }
+    },
+    {
+      "productId": "316649",
+      "productName": "ILIFE T60s Robotic Vacuum Cleaner & Mop with Deep-Cleaning Suction Technology (6400 mAh Battery, White)",
+      "brand": "ILIFE",
+      "sellingPrice": "₹54,900",
+      "actualPrice": "₹1,99,000",
+      "discount": "72%",
+      "discountAmount": "₹1,44,100",
+      "productImage": "https://media.tatacroma.com/Croma%20Assets/Small%20Appliances/Vacuum%20Cleaners/Images/316649_0_dfrzuv.png",
+      "productUrl": "https://www.croma.com/p/316649",
+      "rating": 0,
+      "reviewCount": 0,
+      "availability": "Available",
+      "category": "5",
+      "subCategory": "50",
+      "offers": [
+        "Extra Rs.3000 off on Cart"
+      ],
+      "additionalInfo": {
+        "applianceType": "SA",
+        "demoFlag": false,
+        "productLiveDate": "2025-08-06T11:07:27"
+      }
+    },
+    {
+      "productId": "208969",
+      "productName": "V-Guard 12 Amps Voltage Stabilizer For 1.5T Air Conditioner (170 - 270 V, Smart Digital Display, VG 400, Grey)",
+      "brand": "V-Guard",
+      "sellingPrice": "₹1,749",
+      "actualPrice": "₹2,750",
+      "discount": "36%",
+      "discountAmount": "₹1,001",
+      "productImage": "https://media.tatacroma.com/Croma%20Assets/Entertainment/Media%20Streaming%20Devices/Images/208969_0_wtgimc.png",
+      "productUrl": "https://www.croma.com/p/208969",
+      "rating": 3.8990825688,
+      "reviewCount": 52,
+      "availability": "Available",
+      "category": "5",
+      "subCategory": "53",
+      "offers": [
+        "10% Upto 2k on Cart above 10k"
+      ],
+      "additionalInfo": {
+        "applianceType": "SA-LTD",
+        "demoFlag": false,
+        "productLiveDate": "2018-06-12T08:45:44"
+      }
+    },
+    {
+      "productId": "269835",
+      "productName": "Croma ECO 1200mm 3 Blade Copper Motor Ceiling Fan (Inverter Technology, Brown)",
+      "brand": "Croma",
+      "sellingPrice": "₹1,399",
+      "actualPrice": "₹2,600",
+      "discount": "46%",
+      "discountAmount": "₹1,201",
+      "productImage": "https://media.tatacroma.com/Croma%20Assets/Small%20Appliances/Fans/Images/269835_0_mlvp4x.png",
+      "productUrl": "https://www.croma.com/p/269835",
+      "rating": 2.3529411765,
+      "reviewCount": 11,
+      "availability": "Available",
+      "category": "5",
+      "subCategory": "51",
+      "offers": [
+        "Best Seller"
+      ],
+      "additionalInfo": {
+        "applianceType": "LA",
+        "demoFlag": false,
+        "productLiveDate": "2023-02-27T03:17:54"
+      }
+    }
+  ],
+  "breadcrumbs": [],
+  "filters": {},
+  "pagination": {
+    "currentPage": 0,
+    "pageSize": 21,
+    "totalPages": 127,
+    "totalResults": 2666
+  },
+  "scrapedAt": "2025-09-24T16:35:50.426Z"
+}

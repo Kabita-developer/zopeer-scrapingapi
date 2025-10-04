@@ -56,27 +56,66 @@ class NykaaScraper {
                 await this.init();
             }
 
-            console.log(`Scraping Nykaa product: ${url}`);
-            
-            // Navigate to the product page
+            // Check if it's a category URL
+            if (this.isCategoryUrl(url)) {
+                console.log(`Scraping Nykaa category: ${url}`);
+                return await this.scrapeCategory(url);
+            } else {
+                console.log(`Scraping Nykaa product: ${url}`);
+                return await this.scrapeProductPage(url);
+            }
+        } catch (error) {
+            console.error('Error scraping Nykaa:', error);
+            throw error;
+        }
+    }
+
+    // Detect if URL is a category page
+    isCategoryUrl(url) {
+        return url.includes('/clearance-sale') || 
+               url.includes('/c/') || 
+               url.includes('/category') ||
+               url.includes('/search');
+    }
+
+    // Scrape category page
+    async scrapeCategory(url) {
+        try {
             await this.page.goto(url, { 
                 waitUntil: 'networkidle2',
                 timeout: 30000 
             });
 
-            // Wait for the page to load completely
             await this.page.waitForTimeout(3000);
 
-            // Get page content
             const content = await this.page.content();
             const $ = cheerio.load(content);
 
-            // Extract product data
+            const categoryData = await this.extractCategoryData($, url);
+            return categoryData;
+        } catch (error) {
+            console.error('Error scraping category:', error);
+            throw error;
+        }
+    }
+
+    // Scrape individual product page
+    async scrapeProductPage(url) {
+        try {
+            await this.page.goto(url, { 
+                waitUntil: 'networkidle2',
+                timeout: 30000 
+            });
+
+            await this.page.waitForTimeout(3000);
+
+            const content = await this.page.content();
+            const $ = cheerio.load(content);
+
             const productData = await this.extractProductData($, url);
-            
             return productData;
         } catch (error) {
-            console.error('Error scraping Nykaa product:', error);
+            console.error('Error scraping product page:', error);
             throw error;
         }
     }
@@ -405,6 +444,105 @@ class NykaaScraper {
         }
         
         return results;
+    }
+
+    // Extract category data
+    async extractCategoryData($, url) {
+        try {
+            const categoryData = {
+                url: url,
+                scrapedAt: new Date().toISOString(),
+                source: 'Nykaa',
+                category: 'Clearance Sale',
+                products: []
+            };
+
+            // Extract category title
+            const categoryTitle = $('h1').first().text().trim() || 
+                                $('title').text().trim() ||
+                                'Clearance Sale';
+            categoryData.categoryTitle = categoryTitle;
+
+            // Extract products from category page
+            $('.product-item, .product-card, .css-1rd7vky').each((i, el) => {
+                try {
+                    const product = this.extractProductFromCategory($(el));
+                    if (product && product.title) {
+                        categoryData.products.push(product);
+                    }
+                } catch (error) {
+                    console.error('Error extracting product from category:', error);
+                }
+            });
+
+            // If no products found with above selectors, try alternative selectors
+            if (categoryData.products.length === 0) {
+                $('.css-1rd7vky, .product-card, .product-item').each((i, el) => {
+                    try {
+                        const product = this.extractProductFromCategory($(el));
+                        if (product && product.title) {
+                            categoryData.products.push(product);
+                        }
+                    } catch (error) {
+                        console.error('Error extracting product from category (alt):', error);
+                    }
+                });
+            }
+
+            categoryData.totalProducts = categoryData.products.length;
+            return categoryData;
+        } catch (error) {
+            console.error('Error extracting category data:', error);
+            throw error;
+        }
+    }
+
+    // Extract individual product from category listing
+    extractProductFromCategory($el) {
+        try {
+            const product = {};
+
+            // Extract product title
+            product.title = $el.find('h2, h3, .css-1rd7vky, .product-title, .css-1rd7vky').first().text().trim();
+
+            // Extract product URL
+            const productLink = $el.find('a').first().attr('href');
+            if (productLink) {
+                product.url = productLink.startsWith('http') ? productLink : `${this.baseUrl}${productLink}`;
+            }
+
+            // Extract product image
+            const imageSrc = $el.find('img').first().attr('src') || $el.find('img').first().attr('data-src');
+            if (imageSrc) {
+                product.image = imageSrc.startsWith('http') ? imageSrc : `${this.baseUrl}${imageSrc}`;
+            }
+
+            // Extract prices
+            const priceText = $el.find('.css-1jczs19, .price, .selling-price').text();
+            const mrpText = $el.find('.css-u05rr, .mrp, .original-price').text();
+            
+            product.sellingPrice = this.extractPrice(priceText);
+            product.mrp = this.extractPrice(mrpText);
+            product.discount = this.calculateDiscount(product.mrp, product.sellingPrice);
+
+            // Extract brand from title
+            product.brand = this.extractBrand(product.title) || 'Unknown';
+
+            // Extract rating if available
+            const ratingText = $el.find('.css-m6n3ou, .rating').text();
+            const ratingMatch = ratingText.match(/(\d+\.?\d*)/);
+            product.rating = ratingMatch ? parseFloat(ratingMatch[1]) : null;
+
+            // Extract reviews count
+            const reviewsText = $el.find('.css-1hvvm95, .reviews').text();
+            const reviewMatch = reviewsText.match(/(\d+)/);
+            product.reviewCount = reviewMatch ? parseInt(reviewMatch[1]) : 0;
+
+            return product;
+        } catch (error) {
+            console.error('Error extracting product from category element:', error);
+            return null;
+        }
     }
 
     // Method to search products

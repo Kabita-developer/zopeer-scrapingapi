@@ -38,7 +38,13 @@ const handleError = (res, error, message = 'An error occurred') => {
 // Validate URL
 const validateNykaaUrl = (url) => {
     if (!url) return false;
-    return url.includes('nykaa.com') && (url.includes('/p/') || url.includes('/product'));
+    return url.includes('nykaa.com') && (
+        url.includes('/p/') || 
+        url.includes('/product') || 
+        url.includes('/clearance-sale') ||
+        url.includes('/c/') ||
+        url.includes('/category')
+    );
 };
 
 // Save scraped data to file
@@ -67,7 +73,7 @@ router.post('/scrape', async (req, res) => {
             return res.status(400).json({
                 success: false,
                 error: 'URL is required',
-                message: 'Please provide a valid Nykaa product URL'
+                message: 'Please provide a valid Nykaa URL (product page, category page, or search page)'
             });
         }
 
@@ -75,7 +81,7 @@ router.post('/scrape', async (req, res) => {
             return res.status(400).json({
                 success: false,
                 error: 'Invalid URL',
-                message: 'Please provide a valid Nykaa product URL'
+                message: 'Please provide a valid Nykaa URL (product page, category page, or search page)'
             });
         }
 
@@ -184,7 +190,7 @@ router.get('/product', async (req, res) => {
             return res.status(400).json({
                 success: false,
                 error: 'URL is required',
-                message: 'Please provide a valid Nykaa product URL'
+                message: 'Please provide a valid Nykaa URL (product page, category page, or search page)'
             });
         }
 
@@ -192,7 +198,7 @@ router.get('/product', async (req, res) => {
             return res.status(400).json({
                 success: false,
                 error: 'Invalid URL',
-                message: 'Please provide a valid Nykaa product URL'
+                message: 'Please provide a valid Nykaa URL (product page, category page, or search page)'
             });
         }
 
