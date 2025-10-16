@@ -17,7 +17,12 @@ class AjioCategoriesScraper {
             let html;
             
             if (usePuppeteer) {
-                html = await this.scrapeWithPuppeteer(url);
+                try {
+                    html = await this.scrapeWithPuppeteer(url);
+                } catch (puppeteerError) {
+                    console.log('Puppeteer scraping failed, trying Axios as fallback:', puppeteerError.message);
+                    html = await this.scrapeWithAxios(url);
+                }
             } else {
                 html = await this.scrapeWithAxios(url);
             }
@@ -79,6 +84,7 @@ class AjioCategoriesScraper {
 
     async scrapeWithPuppeteer(url) {
         let browser;
+        let page;
         
         try {
             console.log('Launching Puppeteer...');
@@ -92,14 +98,16 @@ class AjioCategoriesScraper {
                     '--no-first-run',
                     '--no-zygote',
                     '--disable-gpu',
-                    '--window-size=1920,1080'
+                    '--window-size=1920,1080',
+                    '--disable-blink-features=AutomationControlled',
+                    '--disable-features=VizDisplayCompositor'
                 ]
             });
 
-            const page = await browser.newPage();
+            page = await browser.newPage();
             
             // Set a realistic desktop user agent
-            const userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36';
+            const userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
             await page.setUserAgent(userAgent);
             
             // Set viewport
@@ -125,11 +133,36 @@ class AjioCategoriesScraper {
                 'Sec-Fetch-User': '?1'
             });
 
+            // Remove webdriver property to avoid detection
+            await page.evaluateOnNewDocument(() => {
+                Object.defineProperty(navigator, 'webdriver', {
+                    get: () => undefined,
+                });
+            });
+
             console.log('Navigating to URL with extended timeout...', url);
-            await page.goto(url, { 
+            
+            // First, try to navigate to the URL
+            const response = await page.goto(url, { 
                 waitUntil: ['networkidle0', 'domcontentloaded'],
                 timeout: 90000 // 90 second timeout
             });
+
+            // Check if we were redirected to cart or other unwanted pages
+            const currentUrl = page.url();
+            console.log('Current URL after navigation:', currentUrl);
+            
+            if (currentUrl.includes('/cart') || currentUrl.includes('/login') || currentUrl.includes('/signin')) {
+                throw new Error(`Page redirected to ${currentUrl} instead of category page. This might be due to anti-bot measures.`);
+            }
+
+            // Check if we're on the right page by looking for category indicators
+            const pageTitle = await page.title();
+            console.log('Page title:', pageTitle);
+            
+            if (pageTitle.includes('Shopping Bag') || pageTitle.includes('Cart') || pageTitle.includes('Login')) {
+                throw new Error(`Page title indicates we're on ${pageTitle} instead of category page.`);
+            }
 
             // Handle cookie consent and popups
             console.log('Checking for overlays and popups...');
@@ -159,34 +192,42 @@ class AjioCategoriesScraper {
                 }
             }
 
-            // Define all possible product selectors
+            // Wait a bit for the page to fully load
+            await page.waitForTimeout(3000);
+
+            // Define all possible product selectors for Ajio
             const productSelectors = [
-                '.items',
-                '.rilrtl-products',
-                '.product-grid',
-                '.prod',
-                '.item',
                 '.rilrtl-products-list-item',
+                '.item',
+                '.items .item',
                 '.product-grid .item',
+                '.product-list .item',
                 '[data-test="product-card"]',
                 '.preview-image',
-                '.product-tile'
+                '.product-tile',
+                '.prod',
+                '.rilrtl-products',
+                '.product-grid',
+                '.items'
             ];
 
             console.log('Waiting for product elements...');
             let foundSelector = null;
+            let productCount = 0;
 
-            // Try each selector
+            // Try each selector with a small wait
             for (const selector of productSelectors) {
                 try {
+                    await page.waitForSelector(selector, { timeout: 5000 });
                     const elements = await page.$$(selector);
                     if (elements.length > 0) {
                         console.log(`Found ${elements.length} products with selector: ${selector}`);
                         foundSelector = selector;
+                        productCount = elements.length;
                         break;
                     }
                 } catch (e) {
-                    console.log(`Selector ${selector} not found`);
+                    console.log(`Selector ${selector} not found or timeout`);
                 }
             }
 
@@ -201,13 +242,48 @@ class AjioCategoriesScraper {
                             el.textContent.includes('₹') &&
                             !products.includes(el) && 
                             !el.closest('header') && 
-                            !el.closest('footer')) {
+                            !el.closest('footer') &&
+                            !el.closest('nav')) {
                             products.push(el);
                         }
                     });
                     return products.length;
                 });
                 console.log(`Found ${productsFound} potential products using heuristic approach`);
+                productCount = productsFound;
+            }
+
+            // If still no products found, check if we're on the right page
+            if (productCount === 0) {
+                const pageContent = await page.content();
+                if (pageContent.includes('Shopping Bag') || pageContent.includes('Your cart is empty')) {
+                    throw new Error('Page appears to be a cart page instead of category page. The URL might be invalid or the page might be redirecting.');
+                }
+                
+                // Check for common error messages
+                const errorMessages = await page.evaluate(() => {
+                    const errorSelectors = [
+                        '.error-message',
+                        '.no-products',
+                        '.empty-state',
+                        '[class*="error"]',
+                        '[class*="empty"]'
+                    ];
+                    
+                    for (const selector of errorSelectors) {
+                        const element = document.querySelector(selector);
+                        if (element && element.textContent.trim()) {
+                            return element.textContent.trim();
+                        }
+                    }
+                    return null;
+                });
+                
+                if (errorMessages) {
+                    throw new Error(`Page shows error message: ${errorMessages}`);
+                }
+                
+                throw new Error('No products found on the page. The page structure might have changed or the URL might be invalid.');
             }
 
             // Scroll to trigger lazy loading
@@ -342,16 +418,16 @@ class AjioCategoriesScraper {
         
         // Find product containers - Ajio uses various selectors
         const productSelectors = [
+            '.rilrtl-products-list-item',
             '.item',
             '.items .item',
+            '.product-grid .item',
+            '.product-list .item',
             '[data-test="product-card"]',
-            '.rilrtl-products-list-item',
             '.preview-image',
             '.products-list li',
             '.grid-item',
-            '.product-item',
-            '.product-grid .item',
-            '.product-list .item'
+            '.product-item'
         ];
 
         let productElements = $();
@@ -368,9 +444,26 @@ class AjioCategoriesScraper {
             console.log('No products found with standard selectors, trying alternative approach...');
             // Try to find any element that looks like a product
             productElements = $('*[class*="item"]').filter(function() {
-                return $(this).find('img').length > 0 && $(this).find('*[class*="price"]').length > 0;
+                return $(this).find('img').length > 0 && 
+                       ($(this).find('*[class*="price"]').length > 0 || 
+                        $(this).text().includes('₹'));
             });
         }
+
+        if (productElements.length === 0) {
+            console.log('Still no products found, trying broader search...');
+            // Last resort: find any element with image and price text
+            productElements = $('*').filter(function() {
+                const $el = $(this);
+                return $el.find('img').length > 0 && 
+                       $el.text().includes('₹') &&
+                       !$el.closest('header').length &&
+                       !$el.closest('footer').length &&
+                       !$el.closest('nav').length;
+            });
+        }
+
+        console.log(`Processing ${productElements.length} potential product elements...`);
 
         productElements.each((index, element) => {
             try {
@@ -406,7 +499,9 @@ class AjioCategoriesScraper {
                 '.brand-name',
                 '.name',
                 'img[title]',
-                '[data-test="name"]'
+                '[data-test="name"]',
+                '.product-title',
+                '.item-title'
             ];
 
             for (const selector of titleSelectors) {
@@ -422,6 +517,24 @@ class AjioCategoriesScraper {
                 const imgAlt = productElement.find('img').attr('alt');
                 if (imgAlt && imgAlt.includes('Product image of')) {
                     product.title = imgAlt.replace('Product image of ', '').trim();
+                }
+            }
+
+            // If still no title, try to extract from any text that looks like a product name
+            if (!product.title) {
+                const allText = productElement.text();
+                const lines = allText.split('\n').map(line => line.trim()).filter(line => line.length > 0);
+                // Look for the longest line that doesn't contain price symbols or common UI text
+                for (const line of lines) {
+                    if (line.length > 10 && 
+                        !line.includes('₹') && 
+                        !line.includes('OFF') && 
+                        !line.includes('Add to') &&
+                        !line.includes('Wishlist') &&
+                        !line.includes('Quick View')) {
+                        product.title = line;
+                        break;
+                    }
                 }
             }
 
@@ -445,7 +558,10 @@ class AjioCategoriesScraper {
                 '.price strong',
                 '.current-price',
                 '.selling-price',
-                '.price'
+                '.price',
+                '.net-price',
+                '.final-price',
+                '[class*="price"]'
             ];
 
             for (const selector of sellingPriceSelectors) {
@@ -457,6 +573,16 @@ class AjioCategoriesScraper {
                         product.sellingPrice = priceMatch[0];
                         break;
                     }
+                }
+            }
+
+            // If no price found with selectors, search in all text
+            if (!product.sellingPrice) {
+                const allText = productElement.text();
+                const priceMatches = allText.match(/₹[\d,]+/g);
+                if (priceMatches && priceMatches.length > 0) {
+                    // Take the first price found (usually the selling price)
+                    product.sellingPrice = priceMatches[0];
                 }
             }
 
